@@ -1,168 +1,166 @@
 sr type,2017,2018,2019
-Add A Bin                               ,34.0,38.0,44.0
-Add A Can                               ,2406.0,2811.0,2696.0
-Add A Can CANCELLATION                  ,550.0,592.0,604.0
-Add A Cart                              ,16.0,16.0,28.0
-Add A Cart CANCELLATION                 ,32.0,21.0,54.0
-Air Pollution                           ,1034.0,782.0,968.0
-Amenity New                             ,125.0,109.0,81.0
-Amenity Repair                          ,196.0,176.0,158.0
-Ashby Highrise Concern                  ,1.0,1.0,2.0
-Automated Recycling for Business NEW    ,3.0,1.0,
-Bandit Sign                             ,2259.0,2496.0,2694.0
-Boarding Homes                          ,19.0,4.0,10.0
-Bridge and Barricade                    ,426.0,383.0,361.0
-Building Break In                       ,3.0,1.0,6.0
-Building or Sign Code                   ,6054.0,7302.0,7649.0
-City Engineer                           ,1653.0,1916.0,2155.0
-Clean Pavilion or Restroom              ,16.0,17.0,31.0
-Complaint Form Request                  ,45.0,18.0,28.0
-Container Placement                     ,200.0,283.0,267.0
-Container Problem                       ,25151.0,24369.0,24827.0
-Court Surface Repair                    ,25.0,16.0,17.0
-Crisis Cleanup                          ,1615.0,51.0,761.0
-Dangerous Commercial Building           ,351.0,352.0,344.0
-Dead Animal Collection                  ,8380.0,8467.0,8274.0
-Disaster Preparedness Guide Request     ,17.0,39.0,51.0
-Disaster Recovery Escalation            ,,,2.0
-Drainage                                ,9382.0,10538.0,10749.0
-Drainage System Violation               ,436.0,436.0,409.0
-Drinking Water Public Notice            ,3.0,17.0,5.0
-Dugout Repair                           ,3.0,4.0,2.0
-Dumpster Complaint                      ,1082.0,1073.0,837.0
-Dumpster Permit                         ,4.0,5.0,3.0
-Electrical Hazard                       ,17.0,16.0,16.0
-Environmental Health Escalation         ,3.0,3.0,8.0
-Eviction Notice                         ,54.0,4.0,4.0
-Fence Repair                            ,50.0,29.0,34.0
-Fire Code Complaint                     ,,450.0,732.0
-Fire Hydrant                            ,2836.0,3320.0,2884.0
-Flashing School Beacon                  ,2176.0,1941.0,2060.0
-Flooding                                ,5171.0,518.0,1577.0
-Follow-up                               ,2.0,89.0,52.0
-Fountain Repair                         ,105.0,111.0,80.0
-Fountain Repair Urgent                  ,57.0,85.0,19.0
-Fuel Island                             ,16.0,29.0,24.0
-Graffiti - ATT Telephone Equipment      ,33.0,26.0,55.0
-Graffiti - CenterPoint Electrical Equipm,42.0,22.0,97.0
-Graffiti - City Bridge                  ,75.0,71.0,62.0
-Graffiti - City Park                    ,90.0,43.0,79.0
-Graffiti - City Property                ,29.0,40.0,65.0
-Graffiti - City Street/Curb             ,93.0,38.0,36.0
-Graffiti - City Water Fixture           ,15.0,6.0,11.0
-Graffiti - Harris County Flood Control P,4.0,7.0,2.0
-Graffiti - Harris County Toll Road      ,4.0,3.0,7.0
-Graffiti - METRO Bus/Rail               ,8.0,15.0,46.0
-Graffiti - Railroad Fixture             ,9.0,5.0,7.0
-Graffiti - School District Property     ,1.0,5.0,3.0
-Graffiti - TXDoT Highway                ,52.0,40.0,46.0
-Graffiti - Traffic Signal/Sign          ,203.0,113.0,143.0
-Graffiti Private or Commercial Property ,845.0,556.0,757.0
-GraffitiAll                             ,8.0,,
-Health Code                             ,2996.0,2700.0,2452.0
-Heavy Trash Violation                   ,7476.0,8873.0,8198.0
-Hole in Unpaved Ground                  ,26.0,21.0,12.0
-House Move Route                        ,,3.0,1.0
-Icing Bridge                            ,10.0,62.0,8.0
-Icing Roadway                           ,12.0,86.0,22.0
-Identify Numbered Address               ,72.0,59.0,68.0
-Information Category                    ,1.0,,
-Junk Motor Vehicle                      ,3364.0,4447.0,4358.0
-Language Interpretation                 ,,2.0,1.0
-Liaison Note                            ,7.0,3.0,7.0
-Lighting                                ,372.0,367.0,442.0
-Litter Esplanade Median                 ,223.0,734.0,448.0
-Litter Park                             ,328.0,297.0,353.0
-Major Water Leak                        ,50.0,46.0,36.0
-MayorSidewalk                           ,,,3.0
-Medical Evacuation                      ,325.0,3.0,
-Minimum Standards                       ,719.0,791.0,696.0
-Minor Water Leak                        ,63.0,56.0,59.0
-Miss Complaint                          ,,,5.0
-Missed Garbage Pickup                   ,26950.0,29035.0,26304.0
-Missed Heavy Trash Pickup               ,6416.0,19502.0,19805.0
-Missed Recycling Pickup                 ,12167.0,24051.0,18735.0
-Missed Yard Waste Pickup                ,2592.0,4317.0,6072.0
-Mow Esplanade or Median                 ,351.0,374.0,507.0
-Mow Park                                ,228.0,211.0,283.0
-Multi-Resident Facility                 ,54.0,,
-MultiFamily Habitability Violation      ,3185.0,3023.0,2674.0
-Neighborhood Clean up                   ,14.0,16.0,9.0
-Neighborhoods Escalation                ,7.0,10.0,29.0
-New CIP Request                         ,397.0,493.0,499.0
-New Move In Service                     ,347.0,328.0,377.0
-New Resident Container                  ,6111.0,6702.0,7149.0
-New Resident in Private Development     ,17.0,34.0,25.0
-Non Residential Collection CANCEL       ,65.0,53.0,63.0
-Non Residential Collection Service NEW  ,300.0,314.0,392.0
-Nuisance On Property                    ,18806.0,21132.0,19456.0
-Nuisance on Commercial Property         ,176.0,349.0,590.0
-Order Bag Tags                          ,15.0,21.0,21.0
-PWE CIP Project                         ,4530.0,4695.0,3886.0
-PWE Escalation                          ,119.0,275.0,471.0
-Paint Stripes                           ,6.0,4.0,4.0
-Park Facilities Escalation              ,1.0,4.0,10.0
-Park Forestry Escalation                ,44.0,15.0,25.0
-Park Greenspace Escalation              ,1.0,,6.0
-Parking Escalation                      ,1.0,3.0,2.0
-Parking Lot Pothole                     ,13.0,9.0,13.0
-Parking Meter                           ,2970.0,2128.0,1731.0
-Parking Violation                       ,8806.0,8923.0,9216.0
-Pest Control                            ,73.0,50.0,46.0
-Playground or Court Equipment           ,99.0,103.0,108.0
-Pool Fence                              ,,,1.0
-Pool Water Quality Control              ,17.0,9.0,5.0
-Poor Drainage                           ,79.0,59.0,39.0
-Portacan Problem                        ,28.0,33.0,22.0
-Post Replace or Install                 ,28.0,24.0,22.0
-Pothole                                 ,5655.0,5900.0,7650.0
-Property Damage                         ,266.0,239.0,172.0
-Recycle Bin/Cart Retrieve               ,313.0,338.0,344.0
-Recycle Program Start Up                ,13.0,8.0,
-Recycling Cart Repair or Replace        ,6892.0,6602.0,7871.0
-Recycling Participation NEW             ,6016.0,6437.0,7745.0
-Restoration Due To Utility Work         ,2564.0,2622.0,2784.0
-SPARK Park                              ,,21.0,11.0
-SWM Escalation                          ,4008.0,12108.0,10255.0
-Severe Storm Tree Removal               ,102.0,92.0,77.0
-Sewer Manhole                           ,1047.0,913.0,935.0
-Sewer Wastewater                        ,22585.0,22476.0,22495.0
-Sidewalk Repair                         ,22.0,37.0,14.0
-Soccer Goal                             ,2.0,2.0,1.0
-Speed Cushion Repair                    ,,,56.0
-Spilled Debris                          ,699.0,498.0,398.0
-Sprinkler Repair                        ,75.0,73.0,50.0
-Storm Damage                            ,203.0,6.0,3.0
-Storm Debris Collection                 ,10802.0,506.0,1900.0
-Street Condition                        ,6832.0,8064.0,10026.0
-Street Hazard                           ,13147.0,13059.0,13276.0
-Subpoena                                ,13.0,21.0,20.0
-TPIA                                    ,,,413.0
-Test                                    ,,6.0,
-Traffic Applications                    ,368.0,331.0,250.0
-Traffic Bridge/Freeway Lighting         ,1135.0,1387.0,878.0
-Traffic General                         ,1126.0,1175.0,1152.0
-Traffic Markings                        ,1667.0,1533.0,1586.0
-Traffic School Zones                    ,261.0,318.0,305.0
-Traffic Signal Maintenance              ,17424.0,15469.0,20170.0
-Traffic Signals                         ,5434.0,5065.0,5149.0
-Traffic Signs                           ,10595.0,9418.0,9474.0
-Trail Repair                            ,52.0,43.0,72.0
-Trash Can New                           ,24.0,12.0,17.0
-Trash Dumping or Illegal Dumpsite       ,7563.0,7369.0,7556.0
-Tree Code Violation                     ,78.0,103.0,91.0
-Tree Planting                           ,36.0,100.0,57.0
-Tree Removal                            ,2060.0,1871.0,2041.0
-Tree Stump Grinding                     ,134.0,76.0,85.0
-Tree Trim                               ,2903.0,3391.0,3783.0
-Unclassified 311 Web Request            ,7244.0,6905.0,5395.0
-Unregulated Boarding House              ,151.0,50.0,
-Unregulated Residential Facility        ,,137.0,177.0
-Vehicle for Hire Complaint              ,15.0,9.0,4.0
-Vital Statistics Escalation             ,,,2.0
-Water Leak                              ,23661.0,29560.0,25188.0
-Water Main Valve                        ,4015.0,5282.0,3609.0
-Water Playground Repair                 ,73.0,48.0,43.0
-Water Quality                           ,1877.0,1904.0,1297.0
-Water Service                           ,10778.0,13423.0,11403.0
-Water or Ground Pollution               ,156.0,176.0,187.0
+Add A Bin,33.0,38.0,44.0
+Add A Can,2399.0,2806.0,2693.0
+Add A Can CANCELLATION,542.0,583.0,602.0
+Add A Cart,15.0,16.0,28.0
+Add A Cart CANCELLATION,32.0,21.0,54.0
+Air Pollution,984.0,754.0,894.0
+Amenity New,118.0,103.0,73.0
+Amenity Repair,183.0,156.0,138.0
+Ashby Highrise Concern,1.0,1.0,2.0
+Automated Recycling for Business NEW,3.0,1.0,
+Bandit Sign,1930.0,2142.0,1432.0
+Boarding Homes,19.0,4.0,10.0
+Bridge and Barricade,323.0,302.0,242.0
+Building Break In,3.0,1.0,5.0
+Building or Sign Code,5825.0,7115.0,7559.0
+City Engineer,1536.0,1790.0,2025.0
+Clean Pavilion or Restroom,16.0,17.0,27.0
+Complaint Form Request,2.0,2.0,2.0
+Container Placement,197.0,282.0,262.0
+Container Problem,25065.0,24314.0,24728.0
+Court Surface Repair,23.0,15.0,12.0
+Crisis Cleanup,1600.0,43.0,751.0
+Dangerous Commercial Building,342.0,340.0,335.0
+Dead Animal Collection,7369.0,7548.0,6661.0
+Disaster Preparedness Guide Request,17.0,39.0,49.0
+Disaster Recovery Escalation,,,2.0
+Drainage,8729.0,10001.0,9872.0
+Drainage System Violation,400.0,414.0,371.0
+Drinking Water Public Notice,3.0,17.0,5.0
+Dugout Repair,3.0,4.0,1.0
+Dumpster Complaint,1019.0,1043.0,811.0
+Dumpster Permit,4.0,4.0,3.0
+Electrical Hazard,15.0,15.0,14.0
+Environmental Health Escalation,3.0,3.0,8.0
+Eviction Notice,53.0,4.0,4.0
+Fence Repair,42.0,26.0,29.0
+Fire Code Complaint,,442.0,713.0
+Fire Hydrant,2477.0,2847.0,2340.0
+Flashing School Beacon,2026.0,1815.0,1719.0
+Flooding,5069.0,455.0,1462.0
+Follow-up,2.0,89.0,52.0
+Fountain Repair,94.0,98.0,60.0
+Fountain Repair Urgent,51.0,76.0,15.0
+Fuel Island,10.0,22.0,16.0
+Graffiti - ATT Telephone Equipment,23.0,19.0,34.0
+Graffiti - CenterPoint Electrical Equipm,33.0,20.0,48.0
+Graffiti - City Bridge,57.0,52.0,34.0
+Graffiti - City Park,81.0,38.0,66.0
+Graffiti - City Property,25.0,27.0,51.0
+Graffiti - City Street/Curb,82.0,30.0,22.0
+Graffiti - City Water Fixture,14.0,4.0,3.0
+Graffiti - Harris County Flood Control P,3.0,5.0,1.0
+Graffiti - Harris County Toll Road,4.0,3.0,4.0
+Graffiti - METRO Bus/Rail,7.0,11.0,12.0
+Graffiti - Railroad Fixture,8.0,4.0,2.0
+Graffiti - School District Property,1.0,4.0,2.0
+Graffiti - TXDoT Highway,38.0,27.0,21.0
+Graffiti - Traffic Signal/Sign,139.0,82.0,68.0
+Graffiti Private or Commercial Property,762.0,546.0,739.0
+GraffitiAll,8.0,,
+Health Code,2967.0,2685.0,2425.0
+Heavy Trash Violation,7341.0,8834.0,8172.0
+Hole in Unpaved Ground,25.0,17.0,9.0
+House Move Route,,2.0,1.0
+Icing Bridge,10.0,45.0,5.0
+Icing Roadway,8.0,65.0,21.0
+Identify Numbered Address,56.0,43.0,38.0
+Junk Motor Vehicle,3322.0,4423.0,4332.0
+Language Interpretation,,2.0,
+Liaison Note,7.0,3.0,5.0
+Lighting,327.0,332.0,386.0
+Litter Esplanade Median,186.0,626.0,270.0
+Litter Park,284.0,272.0,305.0
+Major Water Leak,47.0,41.0,31.0
+MayorSidewalk,,,3.0
+Medical Evacuation,308.0,2.0,
+Minimum Standards,717.0,789.0,691.0
+Minor Water Leak,56.0,47.0,50.0
+Miss Complaint,,,5.0
+Missed Garbage Pickup,26871.0,28955.0,26225.0
+Missed Heavy Trash Pickup,6369.0,19397.0,19689.0
+Missed Recycling Pickup,12134.0,23973.0,18678.0
+Missed Yard Waste Pickup,2582.0,4306.0,6055.0
+Mow Esplanade or Median,295.0,327.0,247.0
+Mow Park,203.0,188.0,246.0
+Multi-Resident Facility,50.0,,
+MultiFamily Habitability Violation,3137.0,3004.0,2645.0
+Neighborhood Clean up,14.0,15.0,8.0
+Neighborhoods Escalation,6.0,10.0,24.0
+New CIP Request,335.0,426.0,339.0
+New Move In Service,347.0,328.0,377.0
+New Resident Container,6084.0,6687.0,7130.0
+New Resident in Private Development,17.0,34.0,25.0
+Non Residential Collection CANCEL,62.0,53.0,61.0
+Non Residential Collection Service NEW,299.0,310.0,389.0
+Nuisance On Property,17698.0,20643.0,19178.0
+Nuisance on Commercial Property,169.0,341.0,554.0
+Order Bag Tags,15.0,21.0,21.0
+PWE CIP Project,4188.0,4367.0,3223.0
+PWE Escalation,113.0,260.0,419.0
+Paint Stripes,5.0,4.0,4.0
+Park Facilities Escalation,1.0,3.0,9.0
+Park Forestry Escalation,43.0,14.0,24.0
+Park Greenspace Escalation,1.0,,3.0
+Parking Escalation,1.0,3.0,2.0
+Parking Lot Pothole,12.0,9.0,11.0
+Parking Meter,2049.0,1557.0,472.0
+Parking Violation,8254.0,8466.0,8425.0
+Pest Control,64.0,45.0,40.0
+Playground or Court Equipment,89.0,92.0,90.0
+Pool Fence,,,1.0
+Pool Water Quality Control,17.0,8.0,5.0
+Poor Drainage,72.0,56.0,34.0
+Portacan Problem,27.0,32.0,20.0
+Post Replace or Install,25.0,22.0,17.0
+Pothole,4639.0,5148.0,5682.0
+Property Damage,261.0,236.0,170.0
+Recycle Bin/Cart Retrieve,312.0,338.0,340.0
+Recycle Program Start Up,11.0,8.0,
+Recycling Cart Repair or Replace,6880.0,6590.0,7853.0
+Recycling Participation NEW,5996.0,6425.0,7730.0
+Restoration Due To Utility Work,2470.0,2552.0,2693.0
+SPARK Park,,21.0,10.0
+SWM Escalation,3993.0,12071.0,10223.0
+Severe Storm Tree Removal,101.0,90.0,75.0
+Sewer Manhole,916.0,834.0,788.0
+Sewer Wastewater,22162.0,22166.0,22115.0
+Sidewalk Repair,19.0,35.0,8.0
+Soccer Goal,2.0,2.0,1.0
+Speed Cushion Repair,,,38.0
+Spilled Debris,683.0,488.0,379.0
+Sprinkler Repair,63.0,64.0,36.0
+Storm Damage,203.0,6.0,3.0
+Storm Debris Collection,10479.0,481.0,1838.0
+Street Condition,5752.0,6831.0,6627.0
+Street Hazard,11113.0,11271.0,9588.0
+Subpoena,9.0,15.0,10.0
+TPIA,,,56.0
+Traffic Applications,340.0,305.0,195.0
+Traffic Bridge/Freeway Lighting,857.0,1009.0,167.0
+Traffic General,878.0,946.0,796.0
+Traffic Markings,1218.0,1209.0,768.0
+Traffic School Zones,205.0,268.0,210.0
+Traffic Signal Maintenance,11909.0,10805.0,2766.0
+Traffic Signals,4023.0,3936.0,1937.0
+Traffic Signs,8329.0,7618.0,6416.0
+Trail Repair,46.0,33.0,42.0
+Trash Can New,23.0,11.0,13.0
+Trash Dumping or Illegal Dumpsite,6564.0,6513.0,6584.0
+Tree Code Violation,71.0,96.0,85.0
+Tree Planting,35.0,84.0,42.0
+Tree Removal,1906.0,1740.0,1815.0
+Tree Stump Grinding,131.0,71.0,83.0
+Tree Trim,2578.0,3010.0,3118.0
+Unclassified 311 Web Request,5526.0,5469.0,5111.0
+Unregulated Boarding House,149.0,50.0,
+Unregulated Residential Facility,,134.0,175.0
+Vehicle for Hire Complaint,10.0,7.0,4.0
+Vital Statistics Escalation,,,2.0
+Water Leak,22363.0,28090.0,23661.0
+Water Main Valve,3891.0,5191.0,3542.0
+Water Playground Repair,67.0,43.0,35.0
+Water Quality,1864.0,1892.0,1288.0
+Water Service,10671.0,13324.0,11321.0
+Water or Ground Pollution,144.0,161.0,165.0
