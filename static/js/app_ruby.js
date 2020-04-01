@@ -19,25 +19,14 @@ var selType = 'ALL';
 d3.json(zip_url).then(function(data) {
   var zipData = data;
 
-  // Filter the list of cities based on the state chosen
-  // if (stateChosen === "Select") {
-  //     filteredState = cityData
-  // }
-  // else {
-  //   var filteredState = cityData.filter(cityData => cityData.data.state === stateChosen);
-  // }
 
-  // filteredState.sort(function(a, b){
-  //   return a.city_state - b.city_state;
-  // });
-  
-  // Get the element id for the city dropdown
+  // Get the element id for the zipcode dropdown
   var sel = document.getElementById('selZip');
 
   // clear out any data that was already there
   sel.innerHTML="";
 
-  // sort the list of cities
+  // sort the list of zipcodes
 
   var firstOne = true;
 
@@ -49,16 +38,8 @@ d3.json(zip_url).then(function(data) {
     // add opt to end of select box (sel)
     sel.appendChild(opt); 
 
-  // iterate through the filtered list of cites and add the cities to the dropdown.
-  // Also, run the citySelected function with the first city on the list so the charts are populated
-  // with the first city as a default.
   zipData.forEach(function(item) {
     var zipC = item;
-    // if (firstOne){
-    //   citySelected(item.city_state);
-    //   firstOne = false;
-    // }
-
     // create new option element
     var opt = document.createElement('option');
     // create text node to add to option element (opt)
@@ -109,74 +90,45 @@ d3.json(serv_url).then(function(data) {
   
 });
 
-d3.json(neib_url).then(function(data) {
-  var typeData = data;
+// d3.json(neib_url).then(function(data) {
+//   var typeData = data;
 
-  // var sel = document.getElementById('selNeib');
+//   // var sel = document.getElementById('selNeib');
 
-  // // clear out any data that was already there
-  // sel.innerHTML="";
+//   // // clear out any data that was already there
+//   // sel.innerHTML="";
 
-  // // sort the list of cities
+//   // // sort the list of cities
 
-  // var firstOne = true;
-  // var opt = document.createElement('option');
-  // // create text node to add to option element (opt)
-  // opt.appendChild(  document.createTextNode('ALL') );
-  // // set value property of opt
-  // opt.value = 'ALL'; 
-  // // add opt to end of select box (sel)
-  // sel.appendChild(opt); 
+//   // var firstOne = true;
+//   // var opt = document.createElement('option');
+//   // // create text node to add to option element (opt)
+//   // opt.appendChild(  document.createTextNode('ALL') );
+//   // // set value property of opt
+//   // opt.value = 'ALL'; 
+//   // // add opt to end of select box (sel)
+//   // sel.appendChild(opt); 
 
-  // typeData.forEach(function(item) {
-  //   var dataItem = item;
-  //   // if (firstOne){
-  //   //   citySelected(item.city_state);
-  //   //   firstOne = false;
-  //   // }
+//   // typeData.forEach(function(item) {
+//   //   var dataItem = item;
+//   //   // if (firstOne){
+//   //   //   citySelected(item.city_state);
+//   //   //   firstOne = false;
+//   //   // }
 
-  //   // create new option element
-  //   var opt = document.createElement('option');
-  //   // create text node to add to option element (opt)
-  //   opt.appendChild( document.createTextNode(dataItem) );
-  //   // set value property of opt
-  //   opt.value = dataItem; 
-  //   // add opt to end of select box (sel)
-  //   sel.appendChild(opt); 
-  // });
-  
-});
-
-
-// d3.json(date_url).then(function(data) {
-//   var dateData = data;
-
-//   var sel = document.getElementById('selDate');
-
-//   sel.innerHTML="";
-//   var firstOne = true;
-
-//   // iterate through the filtered list of cites and add the cities to the dropdown.
-//   // Also, run the citySelected function with the first city on the list so the charts are populated
-//   // with the first city as a default.
-//   dateData.forEach(function(item) {
-//     var dataItem = item;
-//     // if (firstOne){
-//     //   citySelected(item.city_state);
-//     //   firstOne = false;
-//     // }
-
-//     // create new option element
-//     var opt = document.createElement('option');
-//     // create text node to add to option element (opt)
-//     opt.appendChild( document.createTextNode(dataItem) );
-//     // set value property of opt
-//     opt.value = dataItem; 
-//     // add opt to end of select box (sel)
-//     sel.appendChild(opt); 
-//   });
+//   //   // create new option element
+//   //   var opt = document.createElement('option');
+//   //   // create text node to add to option element (opt)
+//   //   opt.appendChild( document.createTextNode(dataItem) );
+//   //   // set value property of opt
+//   //   opt.value = dataItem; 
+//   //   // add opt to end of select box (sel)
+//   //   sel.appendChild(opt); 
+//   // });
   
 // });
+
+
 
 
 var url = "http://localhost:5000/api/v1.0/houston311/top10Types"

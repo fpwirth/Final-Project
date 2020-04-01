@@ -8,7 +8,7 @@
       <meta charset="UTF-8">
 
     
-      <title>311 Analytics</title>
+      <title>Houston 311 Analytics</title>
 
     </head>
     <body>
@@ -25,8 +25,12 @@
 
 
     <div class="intro text-center">
-        <h1>311 Analytics</h1>
-        <p>Are you in the Right neighborhood?</p>
+        <h1>Houston 311 Analytics</h1>
+        <p>Are you in the RIGHT neighborhood?</p>
+        <p>
+          <input type="button" class="button" onclick="window.location.href = 'index_analysis.html';" value="View Analytics"/>
+          <input type="button" class="button" onclick="window.location.href = 'index_pred.html';" value="Run Prediction"/>
+        </p>
       </div>
 
 
@@ -36,52 +40,14 @@
 <br>
 <div class="row">
   <div class="col-sm-3">
-    <div  class="panel-heading" >
-        <b> Date (YYYYMMDD)</b> 
-        <input type="text" id="selDate" name="selDate"><br>
-    </div>
-  </div> 
-  <div class="col-sm-3">
-    <div class="panel-heading" >
-        <b>Zipcode</b> 
-        <select id="selZip">
-          <option value='ALL'>ALL</option>
-        </select>
-    </div>
-  </div>
-<!-- <div class="col-sm-3">
-  <div  class="panel-heading" >
-       <b>Neighborhood</b> 
-      <select id="selNeib" onchange="neibSelected(this.value)">
-        <option value='ALL'>ALL</option>
-      </select>
-  </div>
-</div> -->
-  <div class="col-sm-3">
-    <div  class="panel-heading" >
-        <b> Type</b> 
-        <select id="selType">
-          <option value='ALL'>ALL</option>
-        </select>
-    </div>
-  </div>
-  <div class="col-sm-3">
-    <div  class="panel-heading" >
-      <input type=submit value=Submit onclick="processModel(document.getElementById('selZip').value, document.getElementById('selDate').value, document.getElementById('selType').value)">
-    </div>
-  </div>
-
-</div>
-<br>
-<div class="row">
-  <div class="col-sm-3">
     <div class="heading" >
       <b>Year</b> 
       <select id="selDate" onchange="yearSelected(this.value)">
+        <option value="ALL">ALL</option>
         <option value="2017">2017</option>
         <option value="2018">2018</option>
         <option value="2019">2019</option>
-        <option value="2020">2020</option>
+        <!-- <option value="2020">2020</option> -->
       </select>
     </div>
   </div>
@@ -105,33 +71,29 @@
     <div class="panel-heading" >
         <b>Type</b> 
         <select id="selType" onchange="typeSelected(this.value)">
-          <option value='Container Problem'>Container Problem</option>
-          <option value='Drainage'>Drainage</option>
-          <option value='Missed Garbage Pickup'>Missed Garbage Pickup</option>
-          <option value='Missed Heavy Trash Pickup'>Missed Heavy Trash Pickup</option>
-          <option value='Missed Recycling Pickup'>Missed Recycling Pickup</option>
-          <option value='Nuisance On Property'>Nuisance On Property</option>
-          <option value='SWM Escalation'>SWM Escalation</option>
-          <option value='Sewer Wastewater'>Sewer Wastewater</option>
-          <option value='Storm Debris Collection'>Storm Debris Collection</option>
-          <option value='Street Condition'>Street Condition</option>
-          <option value='Street Hazard'>Street Hazard</option>
-          <option value='Traffic Signal Maintenance'>Traffic Signal Maintenance</option>
-          <option value='Traffic Signs'>Traffic Signs</option>
-          <option value='Water Leak'>Water Leak</option>
-          <option value='Water Service'>Water Service</option>
+          <option value='ALL'>ALL</option>
         </select>
     </div>
   </div>
 </div>
-
 <div class="row">
-  <div class="col-md-12" id="lineChart">
+<br>
+</div>
+<div class="row">
+  <div class="col-md-8" id="lineChart">
   </div>
-  <div class="col-md-12" id="lineChartMonth">
+  <div class="col-md-4" id="censusData">
   </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="lineChartMonth">
+  </div>
+</div>
+<div class="row">
   <div class="col-md-12" id="lineChartMonth2">
   </div>
+</div>
+<div class="row">
   <div class="col-md-12" id="map">
   </div>
 </div>
@@ -146,7 +108,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script type="text/javascript" src="static/js/app_ruby.js"></script>
+<script type="text/javascript" src="static/js/app_chart.js"></script>
+<script type="text/javascript" src="static/js/app_top10chart.js"></script>
+<script type="text/javascript" src="static/js/app_analysis.js"></script>
 
 
   </body>
