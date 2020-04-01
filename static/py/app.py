@@ -58,6 +58,7 @@ aggData['date_field_str'] = aggData['date_field_str'].astype('str')
 months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 monthsDict = {'Jan': 1,'Feb' : 2,'Mar': 3,'Apr': 4,'May': 5,'Jun': 6,'Jul': 7,'Aug': 8,'Sep': 9,'Oct': 10,'Nov': 11,'Dec': 12}
 
+
 print(censusData.head(5), file=sys.stderr)
 print(aggData.head(5), file=sys.stderr)
 
@@ -383,8 +384,8 @@ def houston311top10ByMonthZip(zip_filter, year_filter, neib_filter, type_filter)
     all_data = sorted(all_data, key = lambda i: (i['sort_key'])) 
     return jsonify(all_data)
 
-@app.route("/api/v1.0/processModel/zip/<zip_filter>/date/<date_selected>/type/<type_filter>")
-def processModel(zip_filter, date_selected, type_filter):
+@app.route("/api/v1.0/processModel/zip/<zip_filter>/temp/<temp_entered>/rain/<rain_entered>/type/<type_filter>")
+def processModel(zip_filter, temp_entered, rain_entered, type_filter):
     """Return a list of all weather for the state"""
 
     census_sel = censusData[censusData['zipcode'] == str(zip_filter).strip()]
@@ -392,10 +393,6 @@ def processModel(zip_filter, date_selected, type_filter):
     # close the session to end the communication with the database
     # Convert list of tuples into normal list
 #     all_names = list(np.ravel(results))
-# Population, Median Age, Household Income, Poverty Rate, % Owner Occupied, tempAvg, precipAvg, Container Problem, Drainage,
-# Missed Garbage Pickup, Missed Heavy Trash Pickup, Missed Recycling Pickup, Nuisance On Property, SWM Escalation, 
-# Sewer Wasterwater, Storm Debris Collection, Street Condition,
-# Street Hazard, Traffic Signal Maintenance, Traffic Sign, Water Leak, Water Service
     all_data = []
     data_dict = {}
 
@@ -404,17 +401,80 @@ def processModel(zip_filter, date_selected, type_filter):
         MedianAge = census['Median Age']
         HouseholdIncome = census['Household Income']
         PovertyRate = census['Poverty Rate']
+        PerOwnerOccupied = census['% Owner Occupied']
         data_dict['MedianAge'] = census['Median Age']
         data_dict['HouseholdIncome'] = census['Household Income']
-        PerOwnerOccupied = census['% Owner Occupied']
+        data_dict["Population"] = census['Population']
+        data_dict["PerCapitaIncome"] = census['Per Capita Income']
+        data_dict["PovertyRate"] = census['Poverty Rate']
+        data_dict["TotalHouseholds"] = census['Total Households']
+        data_dict["TotalOwnerOccupied"] = census['Total Owner Occupied']
+        data_dict["PerOwnerOccupied"] = census['% Owner Occupied']
 
-    weather_sel = weatherData[weatherData['date_field_str'] == str(date_selected).strip()]
-    print('data in filter:'+ str(date_selected), file=sys.stderr)
-    for index, weather in weather_sel.iterrows():
-        tempAvg = weather['tempAvg']
-        precipitation = weather['precipitation']
+    # weather_sel = weatherData[weatherData['date_field_str'] == str(date_selected).strip()]
+    # print('data in filter:'+ str(date_selected), file=sys.stderr)
+    # for index, weather in weather_sel.iterrows():
+        # tempAvg = weather['tempAvg']
+        # precipitation = weather['precipitation']
 
-    new_data = [[population, MedianAge, HouseholdIncome, PovertyRate, PerOwnerOccupied, tempAvg, precipitation, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    contProb = 0
+    if (type_filter == 'Container Problem'):
+        contProb = 1
+    drainProb = 0
+    if (type_filter == 'Drainage'):
+        drainProb = 1
+    missedGarbProb = 0
+    if (type_filter == 'Missed Garbage Pickup'):
+        missedGarbProb = 1
+    missedHeavyProb = 0
+    if (type_filter == 'Missed Heavy Trash Pickup'):
+        missedHeavyProb = 1
+    missedRecProb = 0
+    if (type_filter == 'Missed Recycling Pickup'):
+        missedRecProb = 1
+    nuisProb = 0
+    if (type_filter == 'Nuisance On Property'):
+        nuisProb = 1
+    smwProb = 0
+    if (type_filter == 'SWM Escalation'):
+        smwProb = 1
+    sewerProb = 0
+    if (type_filter == 'Sewer Wasterwater'):
+        sewerProb = 1
+    stormProb = 0
+    if (type_filter == 'Storm Debris Collection'):
+        stormProb = 1
+    streetCondProb = 0
+    if (type_filter == 'Street Condition'):
+        streetCondProb = 1
+    streetHazardProb = 0
+    if (type_filter == 'Street Hazard'):
+        streetHazardProb = 1
+    traficSignalProb = 0
+    if (type_filter == 'Traffic Signal Maintenance'):
+        traficSignalProb = 1
+    trafficSignProb = 0
+    if (type_filter == 'Traffic Sign'):
+        trafficSignProb = 1
+    waterLeakProb = 0
+    if (type_filter == 'Water Leak'):
+        waterLeakProb = 1
+    waterServiceProb = 0
+    if (type_filter == 'Water Service'):
+        waterServiceProb = 1
+
+    
+# Population, Median Age, Household Income, Poverty Rate, % Owner Occupied, tempAvg, precipAvg, Container Problem, Drainage,
+# Missed Garbage Pickup, Missed Heavy Trash Pickup, Missed Recycling Pickup, Nuisance On Property, SWM Escalation, 
+# Sewer Wasterwater, Storm Debris Collection, Street Condition,
+# Street Hazard, Traffic Signal Maintenance, Traffic Sign, Water Leak, Water Service
+
+    new_data = [[population, MedianAge, HouseholdIncome, 
+                PovertyRate, PerOwnerOccupied, float(temp_entered), float(rain_entered),
+                contProb, drainProb, missedGarbProb, missedHeavyProb, 
+                missedRecProb, nuisProb, smwProb, sewerProb, 
+                stormProb, streetCondProb, streetHazardProb, traficSignalProb, 
+                trafficSignProb, waterLeakProb, waterServiceProb]]
 
     # new_data_scaled = X_scaler.transform(new_data)
 
