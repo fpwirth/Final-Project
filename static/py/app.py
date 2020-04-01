@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import os
 import sys
+import pickle
 from collections import OrderedDict
 
 from flask import Flask, jsonify
@@ -11,25 +12,10 @@ from flask_cors import CORS, cross_origin
 
 
 #################################################
-# Database Setup
+# read data from the csv files
 #################################################
 
-# variables to populate the database connection string
-# db_user = 'postgres'
-# db_password = 'postgres'
-# db_host = 'localhost'
-# db_port = 5432
-
-# This database must already exist
-# db_name = "city_state_data_db"
-
-# engine = create_engine(f"postgres://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}")
-# Base.metadata.create_all(engine)
-
-# reflect an existing database into a new model
-# Base = automap_base()
-# Base.prepare(engine, reflect=True)
-
+# print(pd.show_versions(), file=sys.stderr)
 # Save reference to the table
 weatherData = pd.read_csv("../data/selected_weather_data_for_visual.csv")
 aggData = pd.read_csv("../data/agg_hist_311_data.csv")
@@ -72,9 +58,9 @@ aggData['date_field_str'] = aggData['date_field_str'].astype('str')
 months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 monthsDict = {'Jan': 1,'Feb' : 2,'Mar': 3,'Apr': 4,'May': 5,'Jun': 6,'Jul': 7,'Aug': 8,'Sep': 9,'Oct': 10,'Nov': 11,'Dec': 12}
 
-
 print(censusData.head(5), file=sys.stderr)
 print(aggData.head(5), file=sys.stderr)
+
 #################################################
 # Flask Setup
 #################################################
@@ -82,7 +68,15 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+#################################################
+# Loaf Model
+#################################################
 
+def load_model():
+    global model
+    with open('../models/logistic_model.pkl', 'rb') as f:
+        model = pickle.load(f)
+        print("model loaded")
 
 #################################################
 # Flask Routes
@@ -302,7 +296,7 @@ def houston311top10ByMonth():
 
 
 @app.route("/api/v1.0/houston311/top10Types/zip/<zip_filter>/year/<year_filter>/neib/<neib_filter>/type/<type_filter>")
-def houston311Top10byZip(zip_filter, year_filter,neib_filter,  type_filter):
+def houston311Top10byZip(zip_filter, year_filter, neib_filter,  type_filter):
     """Return a list of all weather for the state"""
     agg_sel = aggData
     if (zip_filter != 'ALL'):
@@ -314,6 +308,7 @@ def houston311Top10byZip(zip_filter, year_filter,neib_filter,  type_filter):
     if (type_filter != 'ALL'):
         agg_sel = agg_sel[agg_sel['serv_type'] == str(type_filter).strip()]
     print('data in filter:'+ str(zip_filter), file=sys.stderr)
+#    print('agg:'+ agg_sel.head(5), file=sys.stderr)
     aggTypes = agg_sel.groupby(['serv_type']).agg(
     # Get max of the duration column for each group
     count_issues=('serv_type', 'count'))  
@@ -388,39 +383,53 @@ def houston311top10ByMonthZip(zip_filter, year_filter, neib_filter, type_filter)
     all_data = sorted(all_data, key = lambda i: (i['sort_key'])) 
     return jsonify(all_data)
 
+@app.route("/api/v1.0/processModel/zip/<zip_filter>/date/<date_selected>/type/<type_filter>")
+def processModel(zip_filter, date_selected, type_filter):
+    """Return a list of all weather for the state"""
 
+    census_sel = censusData[censusData['zipcode'] == str(zip_filter).strip()]
+    print('data in filter:'+ str(zip_filter), file=sys.stderr)
+    # close the session to end the communication with the database
+    # Convert list of tuples into normal list
+#     all_names = list(np.ravel(results))
+# Population, Median Age, Household Income, Poverty Rate, % Owner Occupied, tempAvg, precipAvg, Container Problem, Drainage,
+# Missed Garbage Pickup, Missed Heavy Trash Pickup, Missed Recycling Pickup, Nuisance On Property, SWM Escalation, 
+# Sewer Wasterwater, Storm Debris Collection, Street Condition,
+# Street Hazard, Traffic Signal Maintenance, Traffic Sign, Water Leak, Water Service
+    all_data = []
+    data_dict = {}
 
+    for index, census in census_sel.iterrows():
+        population = census['Population']
+        MedianAge = census['Median Age']
+        HouseholdIncome = census['Household Income']
+        PovertyRate = census['Poverty Rate']
+        data_dict['MedianAge'] = census['Median Age']
+        data_dict['HouseholdIncome'] = census['Household Income']
+        PerOwnerOccupied = census['% Owner Occupied']
 
+    weather_sel = weatherData[weatherData['date_field_str'] == str(date_selected).strip()]
+    print('data in filter:'+ str(date_selected), file=sys.stderr)
+    for index, weather in weather_sel.iterrows():
+        tempAvg = weather['tempAvg']
+        precipitation = weather['precipitation']
 
+    new_data = [[population, MedianAge, HouseholdIncome, PovertyRate, PerOwnerOccupied, tempAvg, precipitation, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 
+    # new_data_scaled = X_scaler.transform(new_data)
 
-#     return jsonify(all_names)
+    new_predict = model.predict(new_data)
+    print(new_predict, file=sys.stderr)
+    data_dict['Prediction'] = str(new_predict[0])
+    all_data.append(data_dict)
+    print(all_data, file=sys.stderr)
 
+    #OrderedDict(sorted(all_data.items(),key =lambda x:months.index(x[0])))
+    # all_data = sorted(all_data, key = lambda i: (i['sort_key'])) 
+    return jsonify(all_data)
 
-# @app.route("/api/v1.0/passengers")
-# def passengers():
-#     """Return a list of passenger data including the name, age, and sex of each passenger"""
-
-#     # Open a communication session with the database
-#     session = Session(engine)
-
-#     # Query all passengers
-#     results = session.query(Passenger).all()
-
-#     # close the session to end the communication with the database
-#     session.close()
-
-#     # Create a dictionary from the row data and append to a list of all_passengers
-#     all_passengers = []
-#     for passenger in results:
-#         passenger_dict = {}
-#         passenger_dict["name"] = passenger.name
-#         passenger_dict["age"] = passenger.age
-#         passenger_dict["sex"] = passenger.sex
-#         all_passengers.append(passenger_dict)
-
-#     return jsonify(all_passengers)
 
 
 if __name__ == '__main__':
+    load_model()
     app.run(debug=True)

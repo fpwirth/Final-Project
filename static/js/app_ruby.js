@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////////////
-///  The following code will populate the city dropdown based on the state chosen.
+///  The following code will populate the year dropdown based on the date chosen.
 ///  It is called for the stateSelected function which is in turn called when
 ///  someone click on a new state in the state dropdown on the application page.
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -112,38 +112,38 @@ d3.json(serv_url).then(function(data) {
 d3.json(neib_url).then(function(data) {
   var typeData = data;
 
-  var sel = document.getElementById('selNeib');
+  // var sel = document.getElementById('selNeib');
 
-  // clear out any data that was already there
-  sel.innerHTML="";
+  // // clear out any data that was already there
+  // sel.innerHTML="";
 
-  // sort the list of cities
+  // // sort the list of cities
 
-  var firstOne = true;
-  var opt = document.createElement('option');
-  // create text node to add to option element (opt)
-  opt.appendChild(  document.createTextNode('ALL') );
-  // set value property of opt
-  opt.value = 'ALL'; 
-  // add opt to end of select box (sel)
-  sel.appendChild(opt); 
+  // var firstOne = true;
+  // var opt = document.createElement('option');
+  // // create text node to add to option element (opt)
+  // opt.appendChild(  document.createTextNode('ALL') );
+  // // set value property of opt
+  // opt.value = 'ALL'; 
+  // // add opt to end of select box (sel)
+  // sel.appendChild(opt); 
 
-  typeData.forEach(function(item) {
-    var dataItem = item;
-    // if (firstOne){
-    //   citySelected(item.city_state);
-    //   firstOne = false;
-    // }
+  // typeData.forEach(function(item) {
+  //   var dataItem = item;
+  //   // if (firstOne){
+  //   //   citySelected(item.city_state);
+  //   //   firstOne = false;
+  //   // }
 
-    // create new option element
-    var opt = document.createElement('option');
-    // create text node to add to option element (opt)
-    opt.appendChild( document.createTextNode(dataItem) );
-    // set value property of opt
-    opt.value = dataItem; 
-    // add opt to end of select box (sel)
-    sel.appendChild(opt); 
-  });
+  //   // create new option element
+  //   var opt = document.createElement('option');
+  //   // create text node to add to option element (opt)
+  //   opt.appendChild( document.createTextNode(dataItem) );
+  //   // set value property of opt
+  //   opt.value = dataItem; 
+  //   // add opt to end of select box (sel)
+  //   sel.appendChild(opt); 
+  // });
   
 });
 
@@ -240,6 +240,44 @@ function showTop10Chart() {
   
 }
 
+
+var urlMM = "http://localhost:5000/api/v1.0/processModel"
+
+function processModel(szip, sdate, stype) {
+
+  urlUse = urlMM + '/zip/' + szip;
+  urlUse = urlUse + '/date/' + sdate;
+  urlUse = urlUse + '/type/' + stype;
+  console.log(urlUse);
+
+  d3.json(urlUse).then(function(resp) {
+    console.log("resp");
+    console.log(resp);
+    var medianAge = resp[0].MedianAge
+    var ageToPrint = `Median Age: ${medianAge}`;
+    var householdIncome = resp[0].HouseholdIncome;
+    var incomeToPrint = `Household Income: ${householdIncome}`;
+    var prediction = resp[0].Prediction;
+    var predictionToPrint = `Prediction: ${prediction}`;
+    // var homeFormat = numeral(data.median_value).format('$0,0');
+    // var homeToPrint = `Median Home Value: ${homeFormat}`;
+    
+    // Clear out any data that was already in the key info area
+    var selInfo = document.getElementById('keyInfo');
+
+    showResult.innerHTML="";
+
+    d3.select("#showResult")
+        .append("h4")
+        .text(predictionToPrint)
+        .append("p")
+        .text(incomeToPrint)
+        .append("p")
+        .text(ageToPrint)
+        .append("p");
+
+  });
+}
 
 var urlM = "http://localhost:5000/api/v1.0/houston311/ByMonth"
 
