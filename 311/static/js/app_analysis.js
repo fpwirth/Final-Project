@@ -119,7 +119,7 @@ function showCensusdata() {
     var pove = numeral(resp[0].PovertyRate/100).format('0.0%');
     var povePrint = `Poverty Rate: ${pove}`;
     var perownocc =  numeral(resp[0].PerOwnerOccupied/100).format('0.0%');
-    var perownoccPrint = `%age Owner Occupied: ${perownocc}`;
+    var perownoccPrint = `Per Owner Occupied: ${perownocc}`;
 
     // Clear out any data that was already in the key info area
     var selInfo = document.getElementById('censusData');

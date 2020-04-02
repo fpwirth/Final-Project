@@ -61,11 +61,8 @@ def load_model():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    
-
+  
     return render_template('index.html')
-
-
 
 @app.route('/pred', methods=['GET', 'POST'])
 def indexPred():
@@ -201,29 +198,6 @@ def stateData(date_filter):
     return jsonify(all_data)
 
 
-@app.route("/api/v1.0/weather/dateRange/<date_start>/<date_end>")
-def all_states(date_start, date_end):
-    """Return a list of all weather for the state"""
-
-    # Query all passengers
-    weather_sel = weatherData[weatherData['date_field_str'] >= date_start]
-    weather_sel = weather_sel[weather_sel['date_field_str'] <= date_end]
-
-    # close the session to end the communication with the database
-    # Convert list of tuples into normal list
-#     all_names = list(np.ravel(results))
-    all_data = []
-    # for weather, index in weather_sel:
-    for index, weather in weather_sel.iterrows():
-        weather_dict = {}
-        weather_dict["date"] = weather['date_field']
-        weather_dict["tempMax"] = weather['tempMax']
-        weather_dict["tempMin"] = weather['tempMin']
-        weather_dict["tempAvg"] = weather['tempAvg']
-        weather_dict["precipitation"] = weather['precipitation']
-        all_data.append(weather_dict)
-
-    return jsonify(all_data)
 
 @app.route("/api/v1.0/census/zipcode/<zipcode_filter>")
 def zipCodeData(zipcode_filter):
@@ -272,18 +246,14 @@ def getAllTypes():
 @app.route("/api/v1.0/getAllDates")
 def getAllDates():
     """Return a list of all weather for the state"""
-
     allDates = aggData.date_field_str.unique()
-
     return jsonify(allDates.tolist())
 
 
 @app.route("/api/v1.0/getAllNeib")
 def getAllNeib():
     """Return a list of all weather for the state"""
-
     allDates = aggData.neighborhood.unique()
-
     return jsonify(allDates.tolist())
 
 
@@ -339,7 +309,6 @@ def houston311Top10():
         data_dict = {}
         data_dict["serv_type"] = row.serv_type
         data_dict["count_issues"] = row.count_issues
-
         all_data.append(data_dict)
 
     return jsonify(all_data)
