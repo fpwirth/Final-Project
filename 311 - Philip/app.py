@@ -37,9 +37,12 @@ app = Flask(__name__)
 
 def load_model():
     global model
+    global modelscaler
     with open('static/models/logistic_model.pkl', 'rb') as f:
         model = pickle.load(f)
-        print("model loaded")
+    with open('static/models/scaler.pkl', 'rb') as ff:
+        modelscaler = pickle.load(ff)
+        print("model and scaler loaded")
 
 #################################################
 # Flask Routes
@@ -50,8 +53,12 @@ def index():
     if request.method == 'POST':
         input_data = request.form.to_dict()
         data = process_input(input_data)
-        value = model.predict(data)
-        return render_template('index.html', result=value)
+        predvalue = model.predict(data)
+        probvalue = model.predict_proba(data)
+        prediction = "New Prediction: %.3f" % predvalue
+        meetprob = "Prob of Meeting Deadline : %.3f" % probvalue[0,0]
+        missprob = "Prob of Not Meeting Deadline : %.3f" % probvalue[0,1]
+        return render_template('index.html', pred=prediction, meet=meetprob, miss=missprob)
 
     return render_template('index.html')
 
@@ -135,8 +142,7 @@ def process_input(data):
                 stormProb, streetCondProb, streetHazardProb, traficSignalProb, 
                 trafficSignProb, waterLeakProb, waterServiceProb]]
     print(new_data)
-    X_scaler = StandardScaler().fit(new_data)
-    data_scaled = X_scaler.transform(new_data)
+    data_scaled = modelscaler.transform(new_data)
     print(data_scaled)
     return data_scaled
 
