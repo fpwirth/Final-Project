@@ -68,6 +68,10 @@ def index():
 
     return render_template('index.html')
 
+@app.route("/chris")
+def chris():
+    return render_template('visualization.html')
+
 def process_input(data):
     zip_filter = data['selzip']
     type_filter = data['seltype']
