@@ -6,7 +6,7 @@
 
 
 
-var urlM = "http://localhost:5000/api/v1.0/houston311/ByMonth"
+var urlM = "/api/v1.0/houston311/ByMonth"
 
 function showByMonthChart(selectedZip, selectedYear, selectedType) {
 
