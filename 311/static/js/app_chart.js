@@ -6,7 +6,7 @@
 
 
 
-var urlM = "/api/v1.0/houston311/ByMonth"
+var urlM = "http://localhost:5000/api/v1.0/houston311/ByMonth"
 
 function showByMonthChart(selectedZip, selectedYear, selectedType) {
 
@@ -97,8 +97,8 @@ function showByMonthChart(selectedZip, selectedYear, selectedType) {
               overlaying: 'y',
               side:"left",
               position:0.15,
-              range: [0,20],
-              autorange: false,
+              // range: [0,20],
+              autorange: true,
               tickfont: {
                 color: 'white',
               },

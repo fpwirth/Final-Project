@@ -114,12 +114,12 @@ function showCensusdata() {
     var incomeToPrint = `Household Income: ${householdIncome}`;
     var popu =  numeral(resp[0].Population).format('0,0');
     var popuPrint = `Population: ${popu}`;
-    var househ = numeral(resp[0].TotalHouseholds).format('0,0');
-    var househPrint = `Total Households : ${househ}`;
+    // var househ = numeral(resp[0].TotalHouseholds).format('0,0');
+    // var househPrint = `Total Households : ${househ}`;
     var pove = numeral(resp[0].PovertyRate/100).format('0.0%');
     var povePrint = `Poverty Rate: ${pove}`;
     var perownocc =  numeral(resp[0].PerOwnerOccupied/100).format('0.0%');
-    var perownoccPrint = `Per Owner Occupied: ${perownocc}`;
+    var perownoccPrint = `Percent Owner Occupied: ${perownocc}`;
 
     // Clear out any data that was already in the key info area
     var selInfo = document.getElementById('censusData');
@@ -128,13 +128,13 @@ function showCensusdata() {
 
     d3.select("#censusData")
         .append("h4")
+        .text(popuPrint)    
+        .append("p")
         .text(incomeToPrint)
         .append("p")
         .text(ageToPrint)
-        .append("p")
-        .text(popuPrint)
-        .append("p")
-        .text(househPrint)
+        // .append("p")
+        // .text(househPrint)
         .append("p")
         .text(perownoccPrint)
         .append("p")
