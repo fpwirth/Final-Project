@@ -8,7 +8,7 @@ import pickle
 from collections import OrderedDict
 
 from flask import Flask, jsonify
-from flask_cors import CORS, cross_origin
+#from flask_cors import CORS, cross_origin
 
 
 #################################################
@@ -17,9 +17,9 @@ from flask_cors import CORS, cross_origin
 
 # print(pd.show_versions(), file=sys.stderr)
 # Save reference to the table
-weatherData = pd.read_csv("../data/selected_weather_data_for_visual.csv")
-aggData = pd.read_csv("../data/agg_hist_311_data.csv")
-censusData = pd.read_json("../data/census_data.json")
+weatherData = pd.read_csv("static/data/selected_weather_data_for_visual.csv")
+aggData = pd.read_csv("static/data/agg_hist_311_data.csv")
+censusData = pd.read_json("static/data/census_data.json")
 weatherData['date_field_str'] = weatherData['date_field_str'].astype('str')
 weatherData['yr'] = weatherData['yr'].astype('str')
 censusData['zipcode'] = censusData['Zipcode'].astype('str')
@@ -66,8 +66,8 @@ print(aggData.head(5), file=sys.stderr)
 # Flask Setup
 #################################################
 app = Flask(__name__)
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+#cors = CORS(app)
+#app.config['CORS_HEADERS'] = 'Content-Type'
 
 #################################################
 # Loaf Model
@@ -75,7 +75,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 def load_model():
     global model
-    with open('../models/logistic_model.pkl', 'rb') as f:
+    with open('static/models/logistic_model.pkl', 'rb') as f:
         model = pickle.load(f)
         print("model loaded")
 
@@ -83,10 +83,16 @@ def load_model():
 # Flask Routes
 #################################################
 
-@app.route("/")
-def home():
-    """Main page"""
-    return render_template ("index.html")
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        input_data = request.form.to_dict()
+        data = process_input(input_data)
+        value = model.predict(data)
+        return render_template('index.html', result=value)
+
+    return render_template('index.html')
 
 @app.route("/api/v1.0/weather/date/<date_filter>")
 def stateData(date_filter):
@@ -169,7 +175,7 @@ def zipCodeData(zipcode_filter):
 def getAllZipCodes():
     """Return a list of all weather for the state"""
 
-    allZips = aggData.zipcode.unique();
+    allZips = aggData.zipcode.unique()
 
     return jsonify(allZips.tolist())
 
@@ -177,7 +183,7 @@ def getAllZipCodes():
 def getAllTypes():
     """Return a list of all weather for the state"""
 
-    allServs = aggData.serv_type.unique();
+    allServs = aggData.serv_type.unique()
 
     return jsonify(allServs.tolist())
 
@@ -185,7 +191,7 @@ def getAllTypes():
 def getAllDates():
     """Return a list of all weather for the state"""
 
-    allDates = aggData.date_field_str.unique();
+    allDates = aggData.date_field_str.unique()
 
     return jsonify(allDates.tolist())
 
@@ -194,7 +200,7 @@ def getAllDates():
 def getAllNeib():
     """Return a list of all weather for the state"""
 
-    allDates = aggData.neighborhood.unique();
+    allDates = aggData.neighborhood.unique()
 
     return jsonify(allDates.tolist())
 
