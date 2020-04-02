@@ -5,10 +5,10 @@
 ///  someone click on type of service dropdown on the analysis page.
 ///////////////////////////////////////////////////////////////////////////////////////
 
-var zip_url = "http://localhost:5000/api/v1.0/getAllZipCodes"
-var date_url = "http://localhost:5000/api/v1.0/getAllDates"
-var serv_url = "http://localhost:5000/api/v1.0/getAllTypes"
-var neib_url = "http://localhost:5000/api/v1.0/getAllNeib"
+var zip_url = "/api/v1.0/getAllZipCodes"
+var date_url = "/api/v1.0/getAllDates"
+var serv_url = "/api/v1.0/getAllTypes"
+var neib_url = "/api/v1.0/getAllNeib"
 
 var selYear = 'ALL';
 var selZip = 'ALL';
@@ -92,24 +92,34 @@ d3.json(serv_url).then(function(data) {
 
 
 function showCensusdata() {
-  var urlUse = "http://localhost:5000/api/v1.0/census/zipcode/" + selZip;
+  var urlUse = "/api/v1.0/census/zipcode/" + selZip;
   console.log(urlUse);
 
   d3.json(urlUse).then(function(resp) {
     console.log("resp");
     console.log(resp);
+    // var populationFormat = numeral(data.population).format('0,0');
+    // var populationToPrint =`Population: ${populationFormat}`;
+    // var unemploymentFormat = numeral(data.unemployment_rate/100).format('0.0%');
+    // var unemployToPrint = `Unemployment Rate: ${unemploymentFormat}`;
+    // var incomeFormat = numeral(data.median_income).format('$0,0');
+    // var incomeToPrint = `Median Income: ${incomeFormat}`;
+    // var homeFormat = numeral(data.median_value).format('$0,0');
+    // var homeToPrint = `Median Home Value: ${homeFormat}`;
+
+
     var medianAge = resp[0].MedianAge
     var ageToPrint = `Median Age: ${medianAge}`;
-    var householdIncome = resp[0].HouseholdIncome;
+    var householdIncome = numeral(resp[0].HouseholdIncome).format('$0,0');
     var incomeToPrint = `Household Income: ${householdIncome}`;
-    var popu = resp[0].Population;
+    var popu =  numeral(resp[0].Population).format('0,0');
     var popuPrint = `Population: ${popu}`;
-    var househ = resp[0].TotalHouseholds;
-    var househPrint = `TotalHouseholds: ${househ}`;
-    var pove = resp[0].PovertyRate;
+    var househ = numeral(resp[0].TotalHouseholds).format('0,0');
+    var househPrint = `Total Households : ${househ}`;
+    var pove = numeral(resp[0].PovertyRate/100).format('0.0%');
     var povePrint = `Poverty Rate: ${pove}`;
-    var perownocc = resp[0].PerOwnerOccupied;
-    var perownoccPrint = `PerOwnerOccupied: ${perownocc}`;
+    var perownocc =  numeral(resp[0].PerOwnerOccupied/100).format('0.0%');
+    var perownoccPrint = `Per Owner Occupied: ${perownocc}`;
 
     // Clear out any data that was already in the key info area
     var selInfo = document.getElementById('censusData');

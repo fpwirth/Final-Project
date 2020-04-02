@@ -5,7 +5,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 
 
-var zip_url = "http://localhost:5000/api/v1.0/getAllZipCodes"
+var zip_url = "/api/v1.0/getAllZipCodes"
 
 var selYear = 'ALL';
 var selZip = 'ALL';
@@ -51,7 +51,7 @@ d3.json(zip_url).then(function(data) {
 
 
 
-var urlMM = "http://localhost:5000/api/v1.0/processModel"
+var urlMM = "/api/v1.0/processModel"
 
 function runModel(szip, stemp, srain, stype) {
 

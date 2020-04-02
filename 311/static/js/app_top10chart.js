@@ -5,7 +5,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 
 
-var url = "http://localhost:5000/api/v1.0/houston311/top10Types"
+var url = "/api/v1.0/houston311/top10Types"
 
 function showTop10Chart() {
 
