@@ -58,7 +58,10 @@ def index():
         data = process_input(input_data)
         predvalue = model.predict(data)
         probvalue = model.predict_proba(data)
-        prediction = "New Prediction: %.3f" % predvalue
+        if predvalue == 0:
+            prediction = 'Prediction: Deadline Made'
+        elif predvalue == 1:
+            prediction = 'Prediction: Deadline Missed' 
         meetprob = "Prob of Meeting Deadline : %.3f" % probvalue[0,0]
         missprob = "Prob of Not Meeting Deadline : %.3f" % probvalue[0,1]
         return render_template('index.html', pred=prediction, meet=meetprob, miss=missprob)
@@ -66,7 +69,7 @@ def index():
     return render_template('index.html')
 
 def process_input(data):
-    zip_filter = data['selZip']
+    zip_filter = data['selzip']
     type_filter = data['seltype']
     temp_entered = data['selTemp']
     rain_entered = data['selRain']
@@ -153,7 +156,7 @@ def process_input(data):
 def stateData(date_filter):
     weather_sel = weatherData[weatherData['date_field_str'] == str(date_filter).strip()]
     all_data = []
-    for index, weather in weather_sel.iterrows():
+    for weather in weather_sel.iterrows():
         weather_dict = {}
         weather_dict["date"] = weather['date_field']
         weather_dict["tempMax"] = weather['tempMax']

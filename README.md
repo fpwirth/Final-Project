@@ -6,23 +6,23 @@
 
 #### Summary:  We used data from the City of Houston 311 sytem.  This is a system where citizens of Houston can submit question or report issues, such as a missed garbage pickup.  The date is logged when the issue is reported and a due date is assigned.  The date when the issue is closed is logged when resolved.  We wanted to see if socioeconomic factors or weather would affect whether the issues are closed by the due date or not.
 
-#### There were a lot of files used for this project.  Below are some key files:
+### There were a lot of files used for this project.  Below are some key files:
 
 ##### /Notebooks/model_classification.ipynb:  Notebook used to develop Logistic Regresion model and KNN model. The Logistic Model was deployed.
 ##### /static/app.py:  Flask applicaton.
 ##### ???? List final html files used.
 
-#### This Repo contains the following folders and files:
+### This Repo contains the following folders and files:
 
-#### Files:
+### Files:
 
 ##### HoustonCity.pptx:  Final presentation
 ##### Proposal.docx:  Initial Proposal
 #####
 
-#### Folders:
+### Folders:
 
-##### Clean Data Files Folder Contains:  Cleaned up data files used in notebooks and app
+#### Clean Data Files Folder Contains:  Cleaned up data files used in notebooks and app
 
 ###### 311latlngzipcodes.csv:  File used to map zipcodes to lat/lng.
 ###### COH_ZIPCODE.geojson:  City of Houston zip code list.
@@ -35,7 +35,7 @@
 ###### recorddata.csv: ???
 ###### weatherdata.csv:  Cleaned up weather data file.
 
-##### Notebooks Folder Contains:
+#### Notebooks Folder Contains:
 
 ###### COHZips.ipynb:  City of Houston zipcode analysis.
 ###### Modeling Notebook.ipynb:  Initial file used to create data for modeling.
@@ -52,19 +52,19 @@
 ###### model_classification:  Notebook used to develop logistic and KNN model and output the logistic model for use in the Flask application.  
 
 
-##### static/css Folder Contains:
+#### static/css Folder Contains:
 
 ###### css_ruby.css: Styling sheet used by Ruby.
 ###### style.css:  Additional styling.
 
-##### static/data Folder Contains:
+#### static/data Folder Contains:
 
 ###### Final_selected_weather_data.csv:  Weather data used in Flask app.
 ###### agg_hist_311_data.csv:  311 data used in Flask app.
 ###### census_data.json:  Census data to be used in Flask app.
 ###### selected_weather_data_for_visual.csv:  Weather data used to create visualizations.
 
-##### static/js Folder Contains:
+#### static/js Folder Contains:
 
 ###### 311.js:
 ###### app_analysis.js:
@@ -76,15 +76,15 @@
 ###### showchart.js:
 ###### shp.min.js:
 
-##### static/models Folder Contains:
+#### static/models Folder Contains:
 
 ###### logistic_model.pkl: Saved logistic regression model.
 ###### scaler.pkl:  Saved scaler that was used in model development.  This was then used in the Flask app to scale the example data before feeding into the model and outputing the prediction.
 
-##### static/py Folder Contains:
+#### static/py Folder Contains:
 
 ###### app.py:  Flask application
 
-##### templates Folder Contains:
+#### templates Folder Contains:
 
 ###### ?
