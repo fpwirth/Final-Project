@@ -9,6 +9,9 @@ html {
 }
 
 body {
-  /* Padding bottom by footer height */
   padding-bottom: 80px;
+}
+
+p {
+  padding: 10px;
 }

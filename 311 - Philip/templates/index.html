@@ -22,45 +22,54 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-12 jumbotron intro text-center">
-        <h1>Houston 311 Analytics</h1>
-        <h4>Are you in the RIGHT neighborhood?</h4>
+      <div class="col-md-12">
+        <div class="intro text-center">
+          <div class="banner_h1">
+            <h1>Houston 311 Analytics</h1>
+            <h4>Are you in the RIGHT neighborhood?</h4>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="row">
-      <h1>Model Prediction</h1>
-      <h2>Enter the following parameters</h2>
-      <form method=post enctype=multipart/form-data>
-        <label for="Zipcode">Zipcode (Houston Zips Only):</label>
-        <input type="text" id="selZip" name="selZip"><br>
-        <label for="Type of Service">Type of Service:</label>
-        <select id="selType" name="selType">
-          <option value='Container Problem'>Container Problem</option>
-          <option value='Missed Garbage Pickup'>Missed Garbage Pickup</option>
-          <option value='Missed Heavy Trash Pickup'>Missed Heavy Trash Pickup</option>
-          <option value='Missed Recycling Pickup'>Missed Recycling Pickup</option>
-          <option value='SWM Escalation'>SWM Escalation</option>
-          <option value='Nuisance On Property'>Nuisance On Property</option>
-          <option value='Drainage'>Drainage</option>
-          <option value='Storm Debris Collection'>Storm Debris Collection</option>
-          <option value='Street Condition'>Street Condition</option>
-          <option value='Street Hazard'>Street Hazard</option>
-          <option value='Traffic Signal Maintenance'>Traffic Signal Maintenance</option>
-          <option value='Traffic Signs'>Traffic Signs</option>
-          <option value='Sewer Wastewater'>Sewer Wastewater</option>
-          <option value='Water Leak'>Water Leak</option>
-          <option value='Water Service'>Water Service</option>
-        </select><br>
-        <label for="Temperature">Temperature (Estimate for last week):</label>
-        <input type="text" id="selTemp" name="selTemp"><br>
-        <label for="Rain">Rainfall (Estimate for last week in inches):</label>
-        <input type="text" id="selRain" name="selRain"><br>
-        <input type=submit value=Submit>
-      </form>
-      <h1>{{pred}}</h1>
-      <h1>{{meet}}</h1>
-      <h1>{{miss}}</h1>
+      <div class="col-md-6">
+        <h3>Service Request Deadline Meet</h3>
+        <h3>Enter the following:</h3>
+        <form method=post enctype=multipart/form-data>
+          <label for="Zipcode">Zipcode (Houston Zips Only):</label>
+          <input type="text" id="selZip" name="selZip"><br>
+          <label for="Type of Service">Type of Service:</label>
+          <select id="seltype" name="seltype">
+            <option value=''>Select</option>
+            <option value='Container Problem'>Container Problem</option>
+            <option value='Missed Garbage Pickup'>Missed Garbage Pickup</option>
+            <option value='Missed Heavy Trash Pickup'>Missed Heavy Trash Pickup</option>
+            <option value='Missed Recycling Pickup'>Missed Recycling Pickup</option>
+            <option value='SWM Escalation'>SWM Escalation</option>
+            <option value='Nuisance On Property'>Nuisance On Property</option>
+            <option value='Drainage'>Drainage</option>
+            <option value='Storm Debris Collection'>Storm Debris Collection</option>
+            <option value='Street Condition'>Street Condition</option>
+            <option value='Street Hazard'>Street Hazard</option>
+            <option value='Traffic Signal Maintenance'>Traffic Signal Maintenance</option>
+            <option value='Traffic Signs'>Traffic Signs</option>
+            <option value='Sewer Wastewater'>Sewer Wastewater</option>
+            <option value='Water Leak'>Water Leak</option>
+            <option value='Water Service'>Water Service</option>
+          </select><br>
+          <label for="Temperature">Temperature (Estimate for last week):</label>
+          <input type="text" id="selTemp" name="selTemp"><br>
+          <label for="Rain">Rainfall (Estimate for last week in inches):</label>
+          <input type="text" id="selRain" name="selRain"><br>
+          <input type=submit value=Submit>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h3>{{pred}}</h3>
+        <h3>{{meet}}</h3>
+        <h3>{{miss}}</h3>
+      </div>
     </div>
 
     <div class="row">

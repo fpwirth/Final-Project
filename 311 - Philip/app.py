@@ -7,6 +7,7 @@ import pickle
 from collections import OrderedDict
 from sklearn.preprocessing import StandardScaler
 from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS, cross_origin
 
 #################################################
 # read data from the csv files
@@ -30,6 +31,8 @@ monthsDict = {'Jan': 1,'Feb' : 2,'Mar': 3,'Apr': 4,'May': 5,'Jun': 6,'Jul': 7,'A
 # Flask Setup
 #################################################
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 #################################################
 # Loaf Model
@@ -64,7 +67,7 @@ def index():
 
 def process_input(data):
     zip_filter = data['selZip']
-    type_filter = data['selType']
+    type_filter = data['seltype']
     temp_entered = data['selTemp']
     rain_entered = data['selRain']
     census_sel = censusData[censusData['zipcode'] == str(zip_filter).strip()]
