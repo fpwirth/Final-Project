@@ -3,10 +3,10 @@
 import numpy as np
 import pandas as pd
 import os
-import sys
 import pickle
 from collections import OrderedDict
-from flask import Flask, jsonify
+from sklearn.preprocessing import StandardScaler
+from flask import Flask, jsonify, request, render_template
 
 #################################################
 # read data from the csv files
@@ -55,7 +55,11 @@ def index():
 
     return render_template('index.html')
 
-def processModel(zip_filter, temp_entered, rain_entered, type_filter):
+def process_input(data):
+    zip_filter = data['selZip']
+    type_filter = data['selType']
+    temp_entered = data['selTemp']
+    rain_entered = data['selRain']
     census_sel = censusData[censusData['zipcode'] == str(zip_filter).strip()]
     all_data = []
     data_dict = {}
@@ -130,17 +134,27 @@ def processModel(zip_filter, temp_entered, rain_entered, type_filter):
                 missedRecProb, nuisProb, smwProb, sewerProb, 
                 stormProb, streetCondProb, streetHazardProb, traficSignalProb, 
                 trafficSignProb, waterLeakProb, waterServiceProb]]
+    print(new_data)
+    X_scaler = StandardScaler().fit(new_data)
+    data_scaled = X_scaler.transform(new_data)
+    print(data_scaled)
+    return data_scaled
 
-    # new_data_scaled = X_scaler.transform(new_data)
-
-    new_predict = model.predict(new_data)
-    data_dict['Prediction'] = str(new_predict[0])
-    all_data.append(data_dict)
-
-    #OrderedDict(sorted(all_data.items(),key =lambda x:months.index(x[0])))
-    # all_data = sorted(all_data, key = lambda i: (i['sort_key'])) 
+@app.route("/api/v1.0/weather/date/<date_filter>")
+def stateData(date_filter):
+    weather_sel = weatherData[weatherData['date_field_str'] == str(date_filter).strip()]
+    all_data = []
+    for index, weather in weather_sel.iterrows():
+        weather_dict = {}
+        weather_dict["date"] = weather['date_field']
+        weather_dict["tempMax"] = weather['tempMax']
+        weather_dict["tempMin"] = weather['tempMin']
+        weather_dict["tempAvg"] = weather['tempAvg']
+        weather_dict["precipitation"] = weather['precipitation']
+        all_data.append(weather_dict)
     return jsonify(all_data)
 
+@app.route("/api/v1.0/census/zipcode/<zipcode_filter>")
 def zipCodeData(zipcode_filter):
     census_sel = censusData[censusData['zipcode'] == str(zipcode_filter).strip()]
     all_data = []
@@ -158,22 +172,27 @@ def zipCodeData(zipcode_filter):
         all_data.append(census_dict)
     return jsonify(all_data)
 
+@app.route("/api/v1.0/getAllZipCodes")
 def getAllZipCodes():
     allZips = aggData.zipcode.unique()
     return jsonify(allZips.tolist())
 
+@app.route("/api/v1.0/getAllTypes")
 def getAllTypes():
     allServs = aggData.serv_type.unique()
     return jsonify(allServs.tolist())
 
+@app.route("/api/v1.0/getAllDates")
 def getAllDates():
     allDates = aggData.date_field_str.unique()
     return jsonify(allDates.tolist())
 
+@app.route("/api/v1.0/getAllNeib")
 def getAllNeib():
     allDates = aggData.neighborhood.unique()
     return jsonify(allDates.tolist())
 
+@app.route("/api/v1.0/houston311/zipcode/date/type/<zipcode_filter>/<date_filter>/<type_filter>")
 def houston311byAll(zipcode_filter, date_filter, type_filter):
     agg_sel = aggData[aggData['zipcode'] == str(zipcode_filter).strip()]
     agg_sel = agg_sel[agg_sel['date_field_str'] == str(date_filter).strip()]
@@ -193,6 +212,7 @@ def houston311byAll(zipcode_filter, date_filter, type_filter):
         all_data.append(census_dict)
     return jsonify(all_data)
 
+@app.route("/api/v1.0/houston311/top10Types")
 def houston311Top10():
     aggTypes = aggData.groupby(['serv_type']).agg(
     count_issues=('serv_type', 'count'))  
@@ -207,6 +227,7 @@ def houston311Top10():
         all_data.append(data_dict)
     return jsonify(all_data)
 
+@app.route("/api/v1.0/houston311/ByMonth")
 def houston311top10ByMonth():
     aggTypes = aggData.groupby(['date_month']).agg(
     count_issues=('serv_type', 'count')) 
@@ -227,6 +248,7 @@ def houston311top10ByMonth():
         all_data.append(data_dict)
     return jsonify(all_data)
 
+@app.route("/api/v1.0/houston311/top10Types/zip/<zip_filter>/year/<year_filter>/neib/<neib_filter>/type/<type_filter>")
 def houston311Top10byZip(zip_filter, year_filter, neib_filter,  type_filter):
     agg_sel = aggData
     if (zip_filter != 'ALL'):
@@ -250,6 +272,7 @@ def houston311Top10byZip(zip_filter, year_filter, neib_filter,  type_filter):
         all_data.append(data_dict)
     return jsonify(all_data)
 
+@app.route("/api/v1.0/houston311/ByMonth/zip/<zip_filter>/year/<year_filter>/neib/<neib_filter>/type/<type_filter>")
 def houston311top10ByMonthZip(zip_filter, year_filter, neib_filter, type_filter):
     agg_sel = aggData
     if (zip_filter != 'ALL'):
