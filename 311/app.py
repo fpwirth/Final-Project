@@ -50,9 +50,12 @@ app = Flask(__name__)
 
 def load_model():
     global model
+    global modelscaler
     with open('static/models/logistic_model.pkl', 'rb') as f:
         model = pickle.load(f)
-        print("model loaded")
+    with open('static/models/scaler.pkl', 'rb') as ff:
+        modelscaler = pickle.load(ff)
+        print("model and scaler loaded")
 
 #################################################
 # Flask Routes
@@ -70,13 +73,19 @@ def indexPred():
     if request.method == 'POST':
         input_data = request.form.to_dict()
         data = process_input(input_data)
-        value = model.predict(data)
-        return render_template('index_pred.html', result=value)
+        print(data, file=sys.stderr)
+        predvalue = model.predict(data)
+        probvalue = model.predict_proba(data)
+        prediction = "New Prediction: %.3f" % predvalue
+        meetprob = "Prob of Meeting Deadline : %.3f" % probvalue[0,0]
+        missprob = "Prob of Not Meeting Deadline : %.3f" % probvalue[0,1]
+        return render_template('index_pred.html', pred=prediction, meet=meetprob, miss=missprob)
+        # return render_template('index_pred.html', result=value)
 
     return render_template('index_pred.html')
 
 def process_input(data):
-    print(data, file=sys.stderr)
+    # print((jsonify(data), file=sys.stderr)
     zip_filter = data['selZip']
     type_filter = data['selType']
     temp_entered = data['selTemp']
@@ -170,8 +179,9 @@ def process_input(data):
                 stormProb, streetCondProb, streetHazardProb, traficSignalProb, 
                 trafficSignProb, waterLeakProb, waterServiceProb]]
 
-
-    return new_data
+    data_scaled = modelscaler.transform(new_data)
+    print(data_scaled)
+    return data_scaled
 
 @app.route("/api/v1.0/weather/date/<date_filter>")
 def stateData(date_filter):
