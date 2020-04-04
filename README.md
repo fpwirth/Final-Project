@@ -51,6 +51,7 @@
 ###### final_weather_data.ipynb:  Processing of final weather data.
 ###### model_classification:  Notebook used to develop logistic and KNN model and output the logistic model for use in the Flask application.  
 
+#### backup Folder Contains:  Backup of different version of app.
 
 #### static/css Folder Contains:
 
