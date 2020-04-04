@@ -9,8 +9,8 @@
 ### There were a lot of files used for this project.  Below are some key files:
 
 ##### /Notebooks/model_classification.ipynb:  Notebook used to develop Logistic Regresion model and KNN model. The Logistic Model was deployed.
-##### /static/app.py:  Flask applicaton.
-##### ???? List final html files used.
+##### app.py:  Flask applicaton.
+##### /templates/index.html:  Main web page
 
 ### This Repo contains the following folders and files:
 

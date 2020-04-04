@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Houston 311 Analytics</title>
+  <!-- jquery and jquery ui-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <!-- bootstrap for the formatting -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- D3, Plotly and Leaflet CSS & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+  <!-- link to custom CSS, used in all html pages in the project-->
+  <link rel="stylesheet" href="static/css/css_ruby.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="intro text-center">
+          <div class="banner_h1">
+            <h1>Houston 311 Analytics</h1>
+            <h4>Are you in the RIGHT neighborhood?</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-7">
+        <h4>Will your service request deadline be made?</h4>
+        <h4>Enter the following:</h4>
+        <form method=post enctype=multipart/form-data>
+          <label for="Zipcode">Zipcode (Houston Zips Only):</label>
+          <input type="text" id="selzip" name="selzip"><br>
+          <label for="Type of Service">Type of Service:</label>
+          <select id="seltype" name="seltype">
+            <option value=''>Select</option>
+            <option value='Container Problem'>Container Problem</option>
+            <option value='Missed Garbage Pickup'>Missed Garbage Pickup</option>
+            <option value='Missed Heavy Trash Pickup'>Missed Heavy Trash Pickup</option>
+            <option value='Missed Recycling Pickup'>Missed Recycling Pickup</option>
+            <option value='SWM Escalation'>SWM Escalation</option>
+            <option value='Nuisance On Property'>Nuisance On Property</option>
+            <option value='Drainage'>Drainage</option>
+            <option value='Storm Debris Collection'>Storm Debris Collection</option>
+            <option value='Street Condition'>Street Condition</option>
+            <option value='Street Hazard'>Street Hazard</option>
+            <option value='Traffic Signal Maintenance'>Traffic Signal Maintenance</option>
+            <option value='Traffic Signs'>Traffic Signs</option>
+            <option value='Sewer Wastewater'>Sewer Wastewater</option>
+            <option value='Water Leak'>Water Leak</option>
+            <option value='Water Service'>Water Service</option>
+          </select><br>
+          <label for="Temperature">Temperature (Estimate for last week):</label>
+          <input type="text" id="selTemp" name="selTemp"><br>
+          <label for="Rain">Rainfall (Estimate for last week in inches):</label>
+          <input type="text" id="selRain" name="selRain"><br>
+          <input type=submit value=Submit>
+        </form>
+      </div>
+      <div class="col-md-5">
+        <h4>{{pred}}</h4>
+        <h4>{{meet}}</h4>
+        <h4>{{miss}}</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12" id="map">
+        <div class='tableauPlaceholder' id='viz1585867373246' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ho&#47;Houston311_15857818263900&#47;ChrisSpecial&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Houston311_15857818263900&#47;ChrisSpecial' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ho&#47;Houston311_15857818263900&#47;ChrisSpecial&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div> <script type='text/javascript'> var divElement = document.getElementById('viz1585867373246'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+      </div>
+    </div>
+
+  </div>
+
+<script type="text/javascript" src="static/js/shp.min.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/app_chart.js"></script>
+<script type="text/javascript" src="static/js/app_top10chart.js"></script>
+<script type="text/javascript" src="static/js/app_analysis.js"></script>
+
+</body>
+</html>

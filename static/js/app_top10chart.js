@@ -39,7 +39,7 @@ function showTop10Chart() {
         var data = [trace1];
     
         var layout = {
-            title: {text:"Top 10 Service Requests",font:{ color: 'rgb(96,255,170)', size: 18 } }, 
+            title: {text:"Top 10 Service Requests",font:{ color: 'rgb(96,200,170)', size: 18 } }, 
           xaxis: { 
               title: {text:'Type of Issue',font:{ color: 'rgb(102,255,178)', size: 15 } },
               tickfont: {
