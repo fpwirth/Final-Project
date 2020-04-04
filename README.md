@@ -88,4 +88,5 @@
 
 #### templates Folder Contains:
 
-###### ?
+###### index.html:  main web page the display app
+###### visualization.html:  pie chart visualization (ie. Joke)
